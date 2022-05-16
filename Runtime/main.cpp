@@ -66,6 +66,8 @@ struct CPU
 		INS_LDX_IM = 0xA2,
 		INS_LDY_IM = 0xA3,
 		INS_PTS = 0x8B,
+		INS_ADD = 0xE4,
+		INS_INC = 0x5A,
 		INS_END = 0xFF;
 
 	void Execute(u32 Cycles, Mem& memory)
@@ -98,6 +100,18 @@ struct CPU
 			case INS_PTS:
 			{
 				std::cout << (int)A << std::endl;
+			} break;
+			case INS_ADD:
+			{
+				A = X + Y;
+			} break;
+			case INS_INC:
+			{
+				Byte Register = FetchByte(Cycles, memory);
+
+				if (Register == (int)0) A++;
+				else if (Register == (int)1) X++;
+				else if (Register == (int)2) Y++;
 			} break;
 			default:
 			{

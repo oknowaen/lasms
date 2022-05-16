@@ -18,6 +18,10 @@ for line in lines:
         out_file.write(0xA3.to_bytes(length=1, byteorder='big'))
     elif command.startswith("PTS"):
         out_file.write(0x8B.to_bytes(length=1, byteorder='big'))
+    elif command.startswith("ADD"):
+        out_file.write(0xE4.to_bytes(length=1, byteorder='big'))
+    elif command.startswith("INC"):
+        out_file.write(0x5A.to_bytes(length=1, byteorder='big'))
     elif command.startswith("END"):
         out_file.write(0xFF.to_bytes(length=1, byteorder='big'))
 
