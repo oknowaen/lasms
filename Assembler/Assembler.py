@@ -25,4 +25,4 @@ for line in lines:
     elif command.startswith("END"):
         out_file.write(0xFF.to_bytes(length=1, byteorder='big'))
 
-    out_file.write(int(line.split(" ")[1]).to_bytes(length=1, byteorder='big'))
+    out_file.write(params)
